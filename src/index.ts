@@ -1,9 +1,10 @@
-import * as Koa from 'koa';
+import Koa = require('koa');
 import conditionalGet = require('koa-conditional-get');
 import etag = require('koa-etag');
-import * as favicon from 'koa-favicon';
-import * as morgan from 'koa-morgan';
-import * as path from 'path';
+import favicon = require('koa-favicon');
+import morgan = require('koa-morgan');
+import range = require('koa-range');
+import path = require('path');
 
 import config from '../config';
 import errorHandler from '../utils/errorHandler';
@@ -14,18 +15,21 @@ const app = new Koa();
 
 app.proxy = true;
 
-// handle error
+// Handle error
 app.use(errorHandler);
 
-// http console logger
+// HTTP console logger
 app.use(morgan(isProduction ? 'short' : 'dev'));
 
-// conditional get using etag
+// Conditional GET using etag
 app.use(conditionalGet());
 app.use(etag());
 
-// favicon
+// Favicon
 app.use(favicon(path.resolve(__dirname, '../assets/favicon.ico')));
+
+// Range requests support
+app.use(range);
 
 process.on('uncaughtException' , (err) => {
   logger.error('uncaughtException', err);

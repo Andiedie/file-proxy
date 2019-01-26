@@ -17,6 +17,7 @@
     "koa-etag": "^3.0.0",
     "koa-favicon": "^2.0.1",
     "koa-morgan": "^1.0.1",
+    "koa-range": "^0.3.0",
     "tslint": "^5.12.1",
     "typescript": "^3.2.4",
     "winston": "^3.1.0"
@@ -27,6 +28,7 @@
     "@types/koa-etag": "^3.0.0",
     "@types/koa-favicon": "^2.0.19",
     "@types/koa-morgan": "^1.0.4",
+    "@types/koa-range": "^0.3.1",
     "@types/node": "^10.12.18",
     "nodemon": "^1.18.9",
     "ts-node": "^8.0.2"
