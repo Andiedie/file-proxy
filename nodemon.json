@@ -1,0 +1,9 @@
+{
+  "watch": ["."],
+  "ext": "ts",
+  "ignore": ["node_modules"],
+  "exec": "ts-node ./src/index.ts",
+  "env": {
+    "NODE_ENV": "development"
+  }
+}
