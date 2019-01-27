@@ -8,6 +8,7 @@ import path = require('path');
 import config from './config';
 import download from './middlewares/download';
 import error from './middlewares/error';
+import cleaner from './utils/cleaner';
 import logger from './utils/logger';
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -40,6 +41,8 @@ app.use(staticCache('./files', {
   preload: true,
 }, app.context.files));
 logger.info(`${Object.keys(app.context.files).length} files loaded`);
+
+cleaner();
 
 process.on('uncaughtException' , (err) => {
   logger.error('uncaughtException', err);

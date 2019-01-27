@@ -32,3 +32,10 @@ export async function get(path: string): Promise<File | undefined> {
     return JSON.parse(result);
   }
 }
+
+export async function remove(paths: string | string[]) {
+  if (!(paths instanceof Array)) {
+    paths = [paths];
+  }
+  await kevast.bulkRemove(paths);
+}
