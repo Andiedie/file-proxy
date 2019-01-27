@@ -13,7 +13,7 @@ PROXY=http://127.0.0.1:1087 yarn start
 服务器运行在 `19126` 端口。（仓库创建时间 `2019.01.26`）
 
 ## API
-所有 API 均支持[跨域 CORS](https://developer.mozilla.org/zh/docs/Web/HTTP/Access_control_CORS)，支持 [范围请求 Range requests](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Range_requests)。
+所有 API 均支持 [跨域 CORS](https://developer.mozilla.org/zh/docs/Web/HTTP/Access_control_CORS)，支持 [范围请求 Range requests](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Range_requests)。
 
 假设目标文件 URL 为 `https://example.com/foo.bar`
 
