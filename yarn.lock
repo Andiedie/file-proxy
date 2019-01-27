@@ -39,13 +39,6 @@
     "@types/keygrip" "*"
     "@types/node" "*"
 
-"@types/etag@*":
-  version "1.8.0"
-  resolved "https://registry.npmjs.org/@types/etag/-/etag-1.8.0.tgz#37f0b1f3ea46da7ae319bbedb607e375b4c99f7e"
-  integrity sha512-EdSN0x+Y0/lBv7YAb8IU4Jgm6DWM+Bqtz7o5qozl96fzaqdqbdfHS5qjdpFeIv7xQ8jSLyjMMNShgYtMajEHyQ==
-  dependencies:
-    "@types/node" "*"
-
 "@types/express-serve-static-core@*":
   version "4.16.1"
   resolved "https://registry.npmjs.org/@types/express-serve-static-core/-/express-serve-static-core-4.16.1.tgz#35df7b302299a4ab138a643617bd44078e74d44e"
@@ -85,21 +78,6 @@
   resolved "https://registry.npmjs.org/@types/koa-compose/-/koa-compose-3.2.2.tgz#dc106e000bbf92a3ac900f756df47344887ee847"
   integrity sha1-3BBuAAu/kqOskA91bfRzRIh+6Ec=
 
-"@types/koa-conditional-get@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/@types/koa-conditional-get/-/koa-conditional-get-2.0.0.tgz#ef1daa5960b10509fc3a1cc5e56f9914b326b3bc"
-  integrity sha512-kzEIakwXkkgiJhQPR/IudINqX+xB2gVS+lJWDSEUP3cMYflcX470OOWrUEqOXlc2cCAOyznMo7fFmwfnvd9wyw==
-  dependencies:
-    "@types/koa" "*"
-
-"@types/koa-etag@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.npmjs.org/@types/koa-etag/-/koa-etag-3.0.0.tgz#d14d3dab45d5577b94bc72960631de96751341d3"
-  integrity sha512-gXQUtKGEnCy0sZLG+uE3wL4mvY1CBPcb6ECjpAoD8RGYy/8ACY1B084k8LTFPIdVcmy7GD6Y4n3up3jnupofcQ==
-  dependencies:
-    "@types/etag" "*"
-    "@types/koa" "*"
-
 "@types/koa-favicon@^2.0.19":
   version "2.0.19"
   resolved "https://registry.npmjs.org/@types/koa-favicon/-/koa-favicon-2.0.19.tgz#a1b584fd64c99f16710633272292bf7d4b0ca1fa"
@@ -119,6 +97,13 @@
   version "0.3.1"
   resolved "https://registry.npmjs.org/@types/koa-range/-/koa-range-0.3.1.tgz#dc72d68a6c4c7091de1d967291b9534e6c37c301"
   integrity sha512-0rzb9rR7Rf31qroj0KSrcOBoSlPwK0TUKSdakr1rKJ25Yzyav7JYShybiWufyBJLsdVZoWdow0X1kL09muWroQ==
+  dependencies:
+    "@types/koa" "*"
+
+"@types/koa-static-cache@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.npmjs.org/@types/koa-static-cache/-/koa-static-cache-5.1.0.tgz#37c33f877ecd92c13065ed402184632ab18da326"
+  integrity sha512-9n89fpWYyhfdpjDmHYJikeah6r2F3LC8F+dm+nuCrKd+7R4CiCnlYbNR1AfB3H/1b7Ndz+uucrAycwi9u7QtRA==
   dependencies:
     "@types/koa" "*"
 
@@ -627,6 +612,13 @@ component-emitter@^1.2.1:
   resolved "https://registry.npmjs.org/component-emitter/-/component-emitter-1.2.1.tgz#137918d6d78283f7df7a6b7c5a63e140e69425e6"
   integrity sha1-E3kY1teCg/ffemt8WmPhQOaUJeY=
 
+compressible@^2.0.6:
+  version "2.0.15"
+  resolved "https://registry.npmjs.org/compressible/-/compressible-2.0.15.tgz#857a9ab0a7e5a07d8d837ed43fe2defff64fe212"
+  integrity sha512-4aE67DL33dSW9gw4CI2H/yTxqHLNcxp0yS6jB+4h+wr3e43+1z7vm0HU9qXOH8j+qjKuL8+UtkOxYQSMq60Ylw==
+  dependencies:
+    mime-db ">= 1.36.0 < 2"
+
 concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.npmjs.org/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
@@ -866,11 +858,6 @@ esutils@^2.0.2:
   resolved "https://registry.npmjs.org/esutils/-/esutils-2.0.2.tgz#0abf4f1caa5bcb1f7a9d8acc6dea4faaa04bac9b"
   integrity sha1-Cr9PHKpbyx96nYrMbepPqqBLrJs=
 
-etag@^1.3.0:
-  version "1.8.1"
-  resolved "https://registry.npmjs.org/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
-  integrity sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
-
 execa@^0.7.0:
   version "0.7.0"
   resolved "https://registry.npmjs.org/execa/-/execa-0.7.0.tgz#944becd34cc41ee32a63a9faf27ad5a65fc59777"
@@ -1008,6 +995,11 @@ fs-minipass@^1.2.5:
   integrity sha512-JhBl0skXjUPCFH7x6x61gQxrKyXsxB5gcgePLZCwfyCGGsTISMoIeObbrvVeP6Xmyaudw4TT43qV2Gz+iyd2oQ==
   dependencies:
     minipass "^2.2.1"
+
+fs-readdir-recursive@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/fs-readdir-recursive/-/fs-readdir-recursive-1.1.0.tgz#e32fc030a2ccee44a6b5371308da54be0b397d27"
+  integrity sha512-GNanXlVr2pf02+sPN40XN8HG+ePaNcvM0q5mZBd668Obwb0yD5GiUbZOFgwn8kGMY6I3mdyDJzieUy3PTYyTRA==
 
 fs.realpath@^1.0.0:
   version "1.0.0"
@@ -1495,6 +1487,16 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
+kevast-file@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.npmjs.org/kevast-file/-/kevast-file-0.0.5.tgz#066a0e400e046e3cef5c7ca33282e43ad39525ec"
+  integrity sha512-Gdz8oS+SVEnT9ZCSe3qTZtoTalF4WQ3nFemeA2BDxFDY27EnenhiphDH3Mp2ibD4aTlUYJCj/9o/qyVnBzO55Q==
+
+kevast@^0.4.3:
+  version "0.4.3"
+  resolved "https://registry.npmjs.org/kevast/-/kevast-0.4.3.tgz#6a7b8265b6c6ad875c4e496499b7bd36271fff5a"
+  integrity sha512-rGxbIhtF1ae9iRCVizz+9Ghk9HHMoQM7nc+DhYlS8SnOSS902OEaPr5oXffwUj15vr2hTbbXZ9Vq4+dxAIHsOg==
+
 keygrip@~1.0.3:
   version "1.0.3"
   resolved "https://registry.npmjs.org/keygrip/-/keygrip-1.0.3.tgz#399d709f0aed2bab0a059e0cdd3a5023a053e1dc"
@@ -1536,11 +1538,6 @@ koa-compose@^4.1.0:
   resolved "https://registry.npmjs.org/koa-compose/-/koa-compose-4.1.0.tgz#507306b9371901db41121c812e923d0d67d3e877"
   integrity sha512-8ODW8TrDuMYvXRwra/Kh7/rJo9BtOfPc6qO8eAfC80CnCvSjSl0bkRM24X6/XBBEyj0v1nRUQ1LyOy3dbqOWXw==
 
-koa-conditional-get@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/koa-conditional-get/-/koa-conditional-get-2.0.0.tgz#a43f3723c1d014b730a34ece8adf30b93c8233f2"
-  integrity sha1-pD83I8HQFLcwo07Oit8wuTyCM/I=
-
 koa-convert@^1.2.0:
   version "1.2.0"
   resolved "https://registry.npmjs.org/koa-convert/-/koa-convert-1.2.0.tgz#da40875df49de0539098d1700b50820cebcd21d0"
@@ -1548,14 +1545,6 @@ koa-convert@^1.2.0:
   dependencies:
     co "^4.6.0"
     koa-compose "^3.0.0"
-
-koa-etag@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.npmjs.org/koa-etag/-/koa-etag-3.0.0.tgz#9ef7382ddd5a82ab0deb153415c915836f771d3f"
-  integrity sha1-nvc4Ld1agqsN6xU0FckVg293HT8=
-  dependencies:
-    etag "^1.3.0"
-    mz "^2.1.0"
 
 koa-favicon@^2.0.1:
   version "2.0.1"
@@ -1582,6 +1571,17 @@ koa-range@^0.3.0:
   integrity sha1-NYjjSWRzqDmhvSZNKkKx2FvX/qw=
   dependencies:
     stream-slice "^0.1.2"
+
+koa-static-cache@^5.1.2:
+  version "5.1.2"
+  resolved "https://registry.npmjs.org/koa-static-cache/-/koa-static-cache-5.1.2.tgz#49b592007157b164f5e9df5b276e305c8be5016a"
+  integrity sha512-EhnVBF9mkbp7bijDz2+yg5KxXFsUYUQCOqGy78bAhJp2PRMCMYV7nG/f7k9/liw+43u2Uow0v6ZZ025qBCYsGw==
+  dependencies:
+    compressible "^2.0.6"
+    debug "^3.1.0"
+    fs-readdir-recursive "^1.0.0"
+    mime-types "^2.1.8"
+    mz "^2.7.0"
 
 koa@^2.6.2:
   version "2.6.2"
@@ -1709,12 +1709,12 @@ micromatch@^3.1.10, micromatch@^3.1.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.2"
 
-mime-db@~1.37.0:
+"mime-db@>= 1.36.0 < 2", mime-db@~1.37.0:
   version "1.37.0"
   resolved "https://registry.npmjs.org/mime-db/-/mime-db-1.37.0.tgz#0b6a0ce6fdbe9576e25f1f2d2fde8830dc0ad0d8"
   integrity sha512-R3C4db6bgQhlIhPU48fUtdVmKnflq+hRdad7IyKhtFj06VPNVdk2RhiYL3UjQIlso8L+YxAtFkobT0VK+S/ybg==
 
-mime-types@^2.1.12, mime-types@^2.1.18, mime-types@~2.1.18, mime-types@~2.1.19:
+mime-types@^2.1.12, mime-types@^2.1.18, mime-types@^2.1.8, mime-types@~2.1.18, mime-types@~2.1.19:
   version "2.1.21"
   resolved "https://registry.npmjs.org/mime-types/-/mime-types-2.1.21.tgz#28995aa1ecb770742fe6ae7e58f9181c744b3f96"
   integrity sha512-3iL6DbwpyLzjR3xHSFNFeb9Nz/M8WDkX33t1GFQnFOllWk8pOrh/LSrB5OXlnlW5P9LH73X6loW/eogc+F5lJg==
@@ -1789,7 +1789,7 @@ ms@^2.1.1:
   resolved "https://registry.npmjs.org/ms/-/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
   integrity sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg==
 
-mz@^2.1.0, mz@^2.7.0:
+mz@^2.7.0:
   version "2.7.0"
   resolved "https://registry.npmjs.org/mz/-/mz-2.7.0.tgz#95008057a56cafadc2bc63dde7f9ff6955948e32"
   integrity sha512-z81GNO7nnYMEhrGh9LeymoE4+Yr0Wn5McHIZMK5cfQCl+NDX08sCZgUc9/6MHni9IWuFLm1Z3HTCXu2z9fN62Q==
