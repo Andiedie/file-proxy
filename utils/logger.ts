@@ -11,7 +11,7 @@ const logger = winston.createLogger({
       level: 'error',
     }),
     new winston.transports.File({
-      filename: 'logs/all.log',
+      filename: path.resolve(__dirname, '../logs/all.log'),
     }),
   ],
 });

@@ -1,7 +1,7 @@
 import * as Koa from 'koa';
 import logger from '../utils/logger';
 
-const errorHandler: Koa.Middleware = async (ctx, next) => {
+const error: Koa.Middleware = async (ctx, next) => {
   try {
     await next();
   } catch (err) {
@@ -10,4 +10,4 @@ const errorHandler: Koa.Middleware = async (ctx, next) => {
   }
 };
 
-export default errorHandler;
+export default error;
