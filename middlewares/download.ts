@@ -3,7 +3,6 @@ import Koa = require('koa');
 import path = require('path');
 import url = require('url');
 
-import { RequestError } from 'request-promise-native/errors';
 import logger from '../utils/logger';
 import md5 from '../utils/md5';
 import { request, requestProxy } from '../utils/request';
@@ -22,6 +21,8 @@ const download: Koa.Middleware = async (ctx, next) => {
   try {
     result = await r.get(originUrl);
     ctx.status = result.statusCode;
+    const filePath = path.resolve(__dirname, '../files', filename);
+    fs.writeFileSync(filePath, result.body);
     ctx.body = result.body;
     ctx.set({
       'content-type': result.headers['content-type'],

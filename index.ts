@@ -1,9 +1,8 @@
 import Koa = require('koa');
-import conditionalGet = require('koa-conditional-get');
-import etag = require('koa-etag');
 import favicon = require('koa-favicon');
 import morgan = require('koa-morgan');
 import range = require('koa-range');
+import staticCache = require('koa-static-cache');
 import path = require('path');
 
 import config from './config';
@@ -22,10 +21,6 @@ app.use(error);
 // HTTP console logger
 app.use(morgan(isProduction ? 'short' : 'dev'));
 
-// Conditional GET using etag
-app.use(conditionalGet());
-app.use(etag());
-
 // Favicon
 app.use(favicon(path.resolve(__dirname, './assets/favicon.ico')));
 
@@ -34,6 +29,16 @@ app.use(range);
 
 // Download middleware
 app.use(download);
+
+app.context.files = {};
+app.use(staticCache('./files', {
+  maxAge: config.cacheExpire,
+  buffer: false,
+  gzip: true,
+  usePrecompiledGzip: true,
+  dynamic: true,
+  preload: false,
+}, app.context.files));
 
 process.on('uncaughtException' , (err) => {
   logger.error('uncaughtException', err);
