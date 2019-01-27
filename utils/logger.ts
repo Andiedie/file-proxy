@@ -11,16 +11,19 @@ const logger = winston.createLogger({
       level: 'error',
     }),
     new winston.transports.File({
-      filename: path.resolve(__dirname, '../logs/all.log'),
+      filename: path.resolve(__dirname, '../logs/combined.log'),
     }),
   ],
 });
 
-logger.add(new winston.transports.Console({
-  format: winston.format.combine(
-    winston.format.colorize(),
-    winston.format.simple(),
-  ),
-}));
+if (process.env.NODE_ENV !== 'production') {
+  logger.add(new winston.transports.Console({
+    format: winston.format.combine(
+      winston.format.colorize(),
+      winston.format.simple(),
+    ),
+    level: 'debug',
+  }));
+}
 
 export default logger;

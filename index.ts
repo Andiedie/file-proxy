@@ -37,8 +37,9 @@ app.use(staticCache('./files', {
   gzip: true,
   usePrecompiledGzip: true,
   dynamic: true,
-  preload: false,
+  preload: true,
 }, app.context.files));
+logger.info(`${Object.keys(app.context.files).length} files loaded`);
 
 process.on('uncaughtException' , (err) => {
   logger.error('uncaughtException', err);
