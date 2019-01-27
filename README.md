@@ -17,7 +17,7 @@ PROXY=http://127.0.0.1:1087 yarn start
 
 假设目标文件 URL 为 `https://example.com/foo.bar`
 
-- 普通代理：解决跨域问题
+- 代理静态资源：解决跨域问题
 
   建议编码
   ```
@@ -28,7 +28,7 @@ PROXY=http://127.0.0.1:1087 yarn start
   http://localhost:19126/https://example.com/foo.bar
   ```
 
-- 通过代理服务器代理
+- 通过二级代理服务器代理静态资源：解决访问限制
 
   ```
   http://localhostL19126/https%3A%2F%2Fexample.com%2Ffoo.bar?proxy=true
