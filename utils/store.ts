@@ -11,6 +11,7 @@ export interface File {
   origin: string;
   path: string;
   mimeType: string;
+  hits: number;
 }
 
 export async function set(files: File | File[]) {
