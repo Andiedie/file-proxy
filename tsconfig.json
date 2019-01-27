@@ -3,10 +3,9 @@
     "outDir": "./build",
     "noImplicitAny": true,
     "module": "CommonJS",
-    "declaration": true,
     "target": "ES2015",
-    "strict": true
+    "strict": true,
   },
-  "include": ["src"],
+  "include": ["."],
   "exclude": ["node_modules"]
 }
