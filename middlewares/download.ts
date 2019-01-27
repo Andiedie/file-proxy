@@ -11,14 +11,18 @@ import * as store from '../utils/store';
 const download: Koa.Middleware = async (ctx, next) => {
   const originUrl = decodeURIComponent(ctx.path.substr(1));
   const filename = md5(originUrl);
-  ctx.path = `/${filename}`;
+  if (originUrl !== '') {
+    ctx.path = `/${filename}`;
+  }
 
   await next();
 
+  ctx.statistics.requestCount++;
   if (ctx.status !== 404) {
     const file = await store.get(filename);
     if (file) {
       file.hits++;
+      ctx.statistics.cacheHits++;
       logger.debug('Set content-type');
       ctx.set({
         'content-type': file.mimeType,

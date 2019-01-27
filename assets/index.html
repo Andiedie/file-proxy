@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>File Proxy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    #app {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    table {
+      margin-top: 20px;
+    }
+    .key {
+      text-align: right;
+    }
+    .value {
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <img src="/favicon.ico">
+    <table>
+      <tr>
+        <td class="key">服务器已运行：</td>
+        <td class="value">{{upTime}}</td>
+      </tr>
+      <tr>
+        <td class="key">Git Hash：</td>
+        <td class="value"><a href="https://github.com/Andiedie/file-proxy/commit/{{hashFull}}">{{hashShort}}</a></td>
+      </tr>
+      <tr>
+        <td class="key">请求数：</td>
+        <td class="value">{{requestCount}}</td>
+      </tr>
+      <tr>
+        <td class="key">请求频率：</td>
+        <td class="value">{{requestFrequency}} 次 / 分钟</td>
+      </tr>
+      <tr>
+        <td class="key">缓存命中率：</td>
+        <td class="value">{{cacheHitRate}}</td>
+      </tr>
+      <tr>
+        <td class="key">内存占用：</td>
+        <td class="value">{{memory}}</td>
+      </tr>
+      <tr>
+        <td class="key">CPU 占用：</td>
+        <td class="value">{{cpu}}</td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>
