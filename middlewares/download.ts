@@ -18,17 +18,15 @@ const download: Koa.Middleware = async (ctx, next) => {
 
   await next();
 
-  ctx.statistics.requestCount++;
   if (ctx.status !== 404) {
     const file = await store.get(filename);
     if (file) {
       file.hits++;
-      ctx.statistics.cacheHits++;
       logger.debug('Set content-type');
       ctx.set({
-        'content-type': file.mimeType,
-        'x-cache': 'HIT',
-        'x-cache-hits': file.hits.toString(),
+        'Content-Type': file.mimeType,
+        'X-Cache': 'HIT',
+        'X-Cache-Hits': file.hits.toString(),
       });
       await store.set(file);
     }
@@ -57,9 +55,9 @@ const download: Koa.Middleware = async (ctx, next) => {
     ctx.status = result.statusCode;
     ctx.body = result.body;
     ctx.set({
-      'content-type': mimeType,
-      'x-cache': 'MISS',
-      'x-cache-hits': '0',
+      'Content-Type': mimeType,
+      'X-Cache': 'MISS',
+      'X-Cache-Hits': '0',
     });
   } catch (err) {
     logger.warn(err.message);

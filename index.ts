@@ -5,12 +5,13 @@ import range = require('koa-range');
 import staticCache = require('koa-static-cache');
 import path = require('path');
 
-import config from './config';
 import download from './middlewares/download';
 import error from './middlewares/error';
 import homepage from './middlewares/homepage';
+import * as statistics from './middlewares/statistics';
+
+import config from './config';
 import cleaner from './utils/cleaner';
-import gitHash from './utils/gitHash';
 import logger from './utils/logger';
 import root from './utils/root';
 
@@ -32,11 +33,7 @@ app.use(favicon(path.resolve(root, './assets/favicon.ico')));
 app.use(range);
 
 // Home page
-app.context.statistics = {
-  hash: gitHash(),
-  requestCount: 0,
-  cacheHits: 0,
-};
+app.use(statistics.middleware);
 app.use(homepage);
 
 // Download middleware
