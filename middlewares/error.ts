@@ -6,7 +6,7 @@ const error: Koa.Middleware = async (ctx, next) => {
     await next();
   } catch (err) {
     logger.error(`Error in ${ctx.request.path}: ${err instanceof Error ? err.stack : err}`);
-    ctx.state = 500;
+    ctx.status = 500;
   }
 };
 
