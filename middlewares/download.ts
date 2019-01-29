@@ -6,6 +6,7 @@ import path = require('path');
 import logger from '../utils/logger';
 import md5 from '../utils/md5';
 import { request, requestProxy } from '../utils/request';
+import root from '../utils/root';
 import * as store from '../utils/store';
 
 const download: Koa.Middleware = async (ctx, next) => {
@@ -45,7 +46,7 @@ const download: Koa.Middleware = async (ctx, next) => {
       });
       mimeType = headers['content-type'];
     }
-    const filePath = path.resolve(__dirname, '../files', filename);
+    const filePath = path.resolve(root, './files', filename);
     fs.writeFileSync(filePath, result.body);
     await store.set({
       origin: originUrl,

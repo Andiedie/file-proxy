@@ -1,10 +1,11 @@
 import { Kevast } from 'kevast';
 import { KevastFile } from 'kevast-file';
 import { resolve } from 'path';
+import root from './root';
 
 export const STORE_FILENAME = '__STORE__.json';
 
-const filePath = resolve(__dirname, '../', STORE_FILENAME);
+const filePath = resolve(root, STORE_FILENAME);
 const kevast = new Kevast(new KevastFile(filePath));
 
 export interface File {

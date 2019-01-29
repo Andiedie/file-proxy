@@ -1,17 +1,18 @@
 import * as path from 'path';
 import * as winston from 'winston';
 import config from '../config';
+import root from './root';
 
 const logger = winston.createLogger({
   level: config.logLevel,
   format: winston.format.json(),
   transports: [
     new winston.transports.File({
-      filename: path.resolve(__dirname, '../logs/error.log'),
+      filename: path.resolve(root, './logs/error.log'),
       level: 'error',
     }),
     new winston.transports.File({
-      filename: path.resolve(__dirname, '../logs/combined.log'),
+      filename: path.resolve(root, '../logs/combined.log'),
     }),
   ],
 });

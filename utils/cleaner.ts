@@ -2,9 +2,10 @@ import fs = require('fs');
 import path = require('path');
 import config from '../config';
 import logger from './logger';
+import root from './root';
 import * as store from './store';
 
-const TARGET = path.resolve(__dirname, '../files');
+const TARGET = path.resolve(root, './files');
 // A day
 const INTERVAL = 24 * 60 * 60 * 1000;
 

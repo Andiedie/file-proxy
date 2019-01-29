@@ -4,8 +4,9 @@ import * as fs from 'fs';
 import * as Koa from 'koa';
 import * as path from 'path';
 import pidusage = require('pidusage');
+import root from '../utils/root';
 
-const html = fs.readFileSync(path.resolve(__dirname, '../assets/index.html')).toString();
+const html = fs.readFileSync(path.resolve(root, './assets/index.html')).toString();
 
 const homepage: Koa.Middleware = async (ctx, next) => {
   if (ctx.path !== '/') {

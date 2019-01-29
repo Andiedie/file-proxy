@@ -12,6 +12,7 @@ import homepage from './middlewares/homepage';
 import cleaner from './utils/cleaner';
 import gitHash from './utils/gitHash';
 import logger from './utils/logger';
+import root from './utils/root';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const app = new Koa();
@@ -25,7 +26,7 @@ app.use(error);
 app.use(morgan(isProduction ? 'short' : 'dev'));
 
 // Favicon
-app.use(favicon(path.resolve(__dirname, './assets/favicon.ico')));
+app.use(favicon(path.resolve(root, './assets/favicon.ico')));
 
 // Range requests support
 app.use(range);
@@ -42,15 +43,15 @@ app.use(homepage);
 app.use(download);
 
 // Server static file
-app.context.files = {};
-app.use(staticCache(path.resolve(__dirname, './files'), {
+const files = {};
+app.use(staticCache(path.resolve(root, './files'), {
   maxAge: config.cacheExpire,
   buffer: false,
   gzip: true,
   dynamic: true,
   preload: true,
-}, app.context.files));
-logger.info(`${Object.keys(app.context.files).length} files loaded`);
+}, files));
+logger.info(`${Object.keys(files).length} files loaded`);
 
 // Expired file cleaner
 cleaner();
