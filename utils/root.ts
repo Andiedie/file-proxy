@@ -1,9 +1,12 @@
+import finder = require('find-package-json');
 import path = require('path');
 
-if (!require.main || !process.mainModule) {
-  throw new Error('Cannot determine root path');
+const packageJsonPath = finder(__dirname).next().filename;
+
+if (!packageJsonPath) {
+  throw new Error('Fail to determine root path');
 }
 
-const root = path.dirname(require.main.filename || process.mainModule.filename);
+const root = path.dirname(packageJsonPath);
 
 export default root;
