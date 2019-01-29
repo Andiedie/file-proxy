@@ -3,7 +3,7 @@ import favicon = require('koa-favicon');
 import morgan = require('koa-morgan');
 import range = require('koa-range');
 import staticCache = require('koa-static-cache');
-import path = require('path');
+import { resolve } from 'path';
 
 import download from './middlewares/download';
 import error from './middlewares/error';
@@ -13,7 +13,7 @@ import * as statistics from './middlewares/statistics';
 import config from './config';
 import cleaner from './utils/cleaner';
 import logger from './utils/logger';
-import root from './utils/root';
+import * as path from './utils/path';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const app = new Koa();
@@ -27,21 +27,21 @@ app.use(error);
 app.use(morgan(isProduction ? 'short' : 'dev'));
 
 // Favicon
-app.use(favicon(path.resolve(root, './assets/favicon.ico')));
+app.use(favicon(resolve(path.assets, './favicon.ico')));
 
 // Range requests support
 app.use(range);
 
 // Home page
-app.use(statistics.middleware);
 app.use(homepage);
+app.use(statistics.middleware);
 
 // Download middleware
 app.use(download);
 
 // Server static file
 const files = {};
-app.use(staticCache(path.resolve(root, './files'), {
+app.use(staticCache(path.files, {
   maxAge: config.cacheExpire,
   buffer: false,
   gzip: true,

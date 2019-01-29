@@ -1,11 +1,10 @@
 import fs = require('fs');
-import path = require('path');
+import { resolve } from 'path';
 import config from '../config';
 import logger from './logger';
-import root from './root';
+import * as path from './path';
 import * as store from './store';
 
-const TARGET = path.resolve(root, './files');
 // A day
 const INTERVAL = 24 * 60 * 60 * 1000;
 
@@ -18,11 +17,11 @@ export default () => {
 };
 
 async function cleaner() {
-  const filenames = fs.readdirSync(TARGET);
+  const filenames = fs.readdirSync(path.files);
   const toBeRemoved = [];
   for (const filename of filenames) {
     if (filename === '.gitkeep') { continue; }
-    const filePath = path.resolve(TARGET, filename);
+    const filePath = resolve(path.files, filename);
     const stat = fs.statSync(filePath);
     if (new Date().getTime() - stat.atime.getTime() > config.cacheExpire) {
       toBeRemoved.push(filename);
@@ -30,7 +29,7 @@ async function cleaner() {
     }
   }
   for (const filename of toBeRemoved) {
-    const filePath = path.resolve(TARGET, filename);
+    const filePath = resolve(path.files, filename);
     await store.remove(filename);
     fs.unlinkSync(filePath);
   }

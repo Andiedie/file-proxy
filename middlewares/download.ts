@@ -1,20 +1,21 @@
 import fs = require('fs');
 import Koa = require('koa');
 import _ = require('lodash');
-import path = require('path');
+import { resolve } from 'path';
 
 import logger from '../utils/logger';
 import md5 from '../utils/md5';
+import * as path from '../utils/path';
 import { request, requestProxy } from '../utils/request';
-import root from '../utils/root';
 import * as store from '../utils/store';
 
 const download: Koa.Middleware = async (ctx, next) => {
   const originUrl = decodeURIComponent(ctx.path.substr(1));
   const filename = md5(originUrl);
-  if (originUrl !== '') {
-    ctx.path = `/${filename}`;
+  if (originUrl === '') {
+    return next();
   }
+  ctx.path = `/${filename}`;
 
   await next();
 
@@ -44,7 +45,7 @@ const download: Koa.Middleware = async (ctx, next) => {
       });
       mimeType = headers['content-type'];
     }
-    const filePath = path.resolve(root, './files', filename);
+    const filePath = resolve(path.files, filename);
     fs.writeFileSync(filePath, result.body);
     await store.set({
       origin: originUrl,
