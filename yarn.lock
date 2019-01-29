@@ -56,6 +56,13 @@
     "@types/express-serve-static-core" "*"
     "@types/serve-static" "*"
 
+"@types/find-package-json@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/@types/find-package-json/-/find-package-json-1.1.0.tgz#203c49fc4ecf1012c27f1fc245f90e67c8481e7d"
+  integrity sha512-dd7/1Zy1aeMC80AhTiFW6goknToIkUj8Z+Q3jvnk/pU6oMT1DukQb1d3IO/cHpJW0LkXjUVcl9t60N7bOh8F/Q==
+  dependencies:
+    "@types/node" "*"
+
 "@types/form-data@*":
   version "2.2.1"
   resolved "https://registry.npmjs.org/@types/form-data/-/form-data-2.2.1.tgz#ee2b3b8eaa11c0938289953606b745b738c54b1e"
@@ -972,6 +979,11 @@ fill-range@^4.0.0:
     is-number "^3.0.0"
     repeat-string "^1.6.1"
     to-regex-range "^2.1.0"
+
+find-package-json@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/find-package-json/-/find-package-json-1.1.0.tgz#269b0c148bbe389f027e2c1e0c72fa108eadb348"
+  integrity sha512-ldihxiIFpewACALK0tUByf3GmOaTBjI5OcvwJ3mExgERUZBsSOBV8QM6vVb0/ZqylpzY6Od6SsP8bjFv7fKiTw==
 
 for-in@^1.0.2:
   version "1.0.2"
